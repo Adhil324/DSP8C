@@ -1,9 +1,10 @@
-# DSP-8D
+# DSP-8C
 
 
-#IIR BUTTERWORTH   BAND  STOP  FILTER
+#IIR  BUTTERWORTH  BAND  PASS FILTER
 
 PROGRAM:
+
  clc; 
 clear all; 
 close all; 
@@ -16,7 +17,7 @@ wp=2*fp/f;
 ws=2*fs/f; 
 wn=[wp,ws]; 
 [n]=buttord(wp,ws,ap,as); 
-[b,a]=butter(n,wn,'stop'); 
+[b,a]=butter(n,wn,'bandpass'); 
 w=0:0.01:pi; 
 h=freqz(b,a,w); 
 p=angle(h); 
@@ -26,10 +27,10 @@ plot(w/pi,mag);
 grid; 
 xlabel('normalized frequency'); 
 ylabel('magnitude in db-->'); 
-title('magnitude response(band stop filter)'); 
+title('magnitude response(band pass filter)'); 
 subplot(2,1,2); 
 plot(w/pi,p); 
 grid; 
 xlabel('normalized frequency-->'); 
 ylabel('phase in radians-->'); 
-title('phase response(bandstop filter)'); 
+title('phase response(band pass filter)');
